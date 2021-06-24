@@ -6,7 +6,7 @@ namespace AdminHelper
 {
     class AdminHelper
     {
-        public static void Start(ref Database.Database db, ref Session.LoginAccountSession session)
+        public static void Start(ref Database.Database db, ref Conclusion.LoginAccountConclusion Conclusion)
         {
             var adminMenuLoop = true;
             while (adminMenuLoop)
@@ -167,7 +167,7 @@ namespace AdminHelper
                     }
                     case AdminMenuOptions.LOGOUTADMIN:
                     {
-                        session.Logout();
+                        Conclusion.Logout();
                         adminMenuLoop = false;
                         break;
                     }

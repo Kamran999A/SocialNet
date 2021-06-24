@@ -2,7 +2,7 @@
 using Exceptions;
 using Network;
 
-namespace Session
+namespace Conclusion
 {
     struct UserCredentials
     {
@@ -15,7 +15,7 @@ namespace Session
             Password = Hash.Hash.GetHashSha256(password);
         }
     }
-    static class CreateAccountSession
+    static class CreateAccountConclusion
     {
         private static string ConfirmationCode { get; set; }
         public static void Registration(ref Database.Database db, ref User.User user)
@@ -45,7 +45,7 @@ namespace Session
             return false;
         }
     }
-    class LoginAccountSession
+    class LoginAccountConclusion
     {
         public bool Status { get; set; }
         public object User{ get; set; }

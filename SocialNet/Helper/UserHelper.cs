@@ -7,7 +7,7 @@ namespace UserSide
 {
     static class UserSide
     {
-        public static void Start(ref Database.Database db, ref Session.LoginAccountSession session)
+        public static void Start(ref Database.Database db, ref Conclusion.LoginAccountConclusion Conclusion)
         {
             var userMenuLoop = true;
             while (userMenuLoop)
@@ -64,7 +64,7 @@ namespace UserSide
                             
                             post.IncreaseView();
 
-                            var newNotf = new Notification.Notification(){FromUser = session.User as User.User, Text= $"{(session.User as User.User).Username} viewed this post [id] ->{post.Id}"};
+                            var newNotf = new Notification.Notification(){FromUser = Conclusion.User as User.User, Text= $"{(Conclusion.User as User.User).Username} viewed this post [id] ->{post.Id}"};
 
                             db.AddNotification(ref newNotf);
 
@@ -113,7 +113,7 @@ namespace UserSide
                             Console.WriteLine("Post liked!");
                             Console.ResetColor();
                             
-                            var newNotf = new Notification.Notification() { FromUser = session.User as User.User, Text = $"{(session.User as User.User).Username} liked this post [id] ->{post.Id}" };
+                            var newNotf = new Notification.Notification() { FromUser = Conclusion.User as User.User, Text = $"{(Conclusion.User as User.User).Username} liked this post [id] ->{post.Id}" };
 
                             db.AddNotification(ref newNotf);
 
@@ -144,14 +144,14 @@ namespace UserSide
                             content = Console.ReadLine();
                         } while (String.IsNullOrWhiteSpace(content));
 
-                        var newPost = new Post.Post() {Username = (session.User as User.User).Username, Content = content};
+                        var newPost = new Post.Post() {Username = (Conclusion.User as User.User).Username, Content = content};
 
-                        (session.User as User.User).AddPost(ref newPost);
+                        (Conclusion.User as User.User).AddPost(ref newPost);
                         break;
                     }
                     case UserMenuOptions.LOGOUTUSER:
                     {
-                        session.Logout();
+                        Conclusion.Logout();
                         userMenuLoop = false;
                         break;
                     }
