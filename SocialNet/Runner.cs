@@ -9,10 +9,63 @@ namespace SocialNet
 {
     class Runner
     {
-       public static void Runnerofit()
+        private static int Width;
+        private static int Hieght;
+        private static int LocationX;
+        private static int LocationY;
+        private static int count = 0;
+        private static ConsoleColor BorderColor;
+
+
+
+        public static void Draw()
         {
+            string s = "╔";
+            string space = "";
+            string temp = "";
+            for (int i = 0; i < Width; i++)
+            {
+                space += " ";
+                s += "═";
+            }
 
+            for (int j = 0; j < LocationX; j++)
+                temp += " ";
 
+            s += "╗" + "\n";
+
+            for (int i = 0; i < Hieght; i++)
+                s += temp + "║" + space + "║" + "\n";
+
+            s += temp + "╚";
+            for (int i = 0; i < Width; i++)
+                s += "═";
+
+            s += "╝" + "\n";
+
+            Console.ForegroundColor = BorderColor;
+            Console.CursorTop = LocationY;
+            Console.CursorLeft = LocationX;
+            Console.Write(s);
+            if (count == 0)
+            {
+
+            }
+            Console.ResetColor();
+        }
+        private static void ConsoleRectangle(int width, int hieght, int locationX, int locationY, ConsoleColor borderColor)
+        {
+            Width = width;
+            Hieght = hieght;
+            LocationX = locationX;
+            LocationY = locationY;
+            BorderColor = borderColor;
+        }
+
+        public static void Runnerofit()
+        {
+            ConsoleRectangle(73, 22, 20, 4, ConsoleColor.DarkRed);
+            Draw();
             var db = new Database.Database();
             var Conclusion = new Conclusion.LoginAccountConclusion();
             var user = new User.User
@@ -24,7 +77,6 @@ namespace SocialNet
                 Password = "unbrella123",
                 Activation = true
             };
-
             var admin = new Admin.Admin
             {
                 Email = "admin@admin.com",
@@ -32,11 +84,12 @@ namespace SocialNet
                 Password = "admin"
             };
             db.AddUser(ref user);
-
             db.AddAdmin(ref admin);
             var mainMenuLoop = true;
             while (mainMenuLoop)
             {
+                Console.SetCursorPosition(30, 10);
+                Draw();
                 ConsoleInterface.PrintMenu(ConsoleInterface.MainMenuOptions);
 
                 switch ((MainMenuOptions)ConsoleInterface.InputChoice(ConsoleInterface.MainMenuOptions.Length))
@@ -48,11 +101,13 @@ namespace SocialNet
                                 Console.Clear();
                                 string username, password;
 
-
+                                Draw();
+                                Console.SetCursorPosition(30, 10);
                                 Console.Write("Username: ");
 
                                 username = Console.ReadLine();
 
+                                Console.SetCursorPosition(31, 11);
                                 Console.Write("Password: ");
 
                                 password = Console.ReadLine();
@@ -64,6 +119,7 @@ namespace SocialNet
                                 }
                                 catch (Exception e)
                                 {
+                                    Console.SetCursorPosition(33, 13);
                                     Console.WriteLine(e.Message);
                                     Helper.ConsoleHelper.ClearConsole();
                                     continue;

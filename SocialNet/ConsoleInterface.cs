@@ -1,5 +1,14 @@
 ﻿using System;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+//using System.Windows.Forms; 
 namespace SocialNet
 {
     enum MainMenuOptions
@@ -47,8 +56,10 @@ namespace SocialNet
             {
                 Console.Clear();
                 Console.Title = "Social Network: " + options[0];
+                Runner.Draw();
                 for (int i = 1; i < options.Length; i++)
                 {
+                    Console.SetCursorPosition(31, 10+i);
                     Console.Write($"{i}. {options[i]}\n");
                 }
             }
@@ -59,6 +70,7 @@ namespace SocialNet
             var choice = 0;
             do
             {
+                Console.SetCursorPosition(31, 14);
                 Console.Write(">> ");
 
                 try
@@ -68,8 +80,10 @@ namespace SocialNet
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
+                    //MessageBox.Show(e.Message);
                     Helper.ConsoleHelper.ClearConsole(length - 1, 10);
                 }
+               
             } while (choice < 1 || choice > length);
 
             return choice;

@@ -1,5 +1,6 @@
 ﻿using System;
 using Exceptions;
+using SocialNet;
 using Network;
 
 namespace Conclusion
@@ -57,10 +58,15 @@ namespace Conclusion
                 user = Array.Find(db.Users, user1 => user1.Username == credentials.Username);
 
             if (user == null)
+            {
+                Runner.Draw();
+                Console.SetCursorPosition(35, 15);
                 throw new LoginException($"There is no account associated this username -> {credentials.Username}");
-
+            }
             if (user.Password != credentials.Password)
-                throw new LoginException($"Password is wrong!");
+                Runner.Draw();
+            Console.SetCursorPosition(35, 15);
+            throw new LoginException($"Password is wrong!");
 
             User = user;
             Status = true;
@@ -72,11 +78,18 @@ namespace Conclusion
             if (db.Users != null)
                 admin = Array.Find(db.Admins, admin1 => admin1.Username == credentials.Username);
             if (admin == null)
-                throw new LoginException($"There is no account associated this username -> {credentials.Username}");
+            {  Runner.Draw();
+            Console.SetCursorPosition(35, 15);
+            throw new LoginException($"There is no account associated this username -> {credentials.Username}"); }
             if (admin.Password != credentials.Password)
+            {
+                Runner.Draw();
+
+                Console.SetCursorPosition(35, 15);
                 throw new LoginException($"Password is wrong!");
-            User = admin;
-            Status = true;
+                User = admin;
+                Status = true;
+            }
         }
         public void Logout()
         {
