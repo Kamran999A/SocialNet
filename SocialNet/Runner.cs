@@ -328,7 +328,7 @@ namespace SocialNet
                                                 Email = email,
                                                 Password = password
                                             };
-
+                                            //
                                             try
                                             {
                                                 CreateAccountConclusion.SendConfirmationCode(newUser.Email);
