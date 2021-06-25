@@ -340,7 +340,7 @@ namespace SocialNet
                                                 Console.ResetColor();
 
                                                 var accountCreated = false;
-                                                var tryCount = 3;
+                                                var tryCount = 3; 
                                                 while (tryCount-- > 0)
                                                 {
                                                     
