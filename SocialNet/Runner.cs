@@ -180,6 +180,8 @@ namespace SocialNet
 
                                             while (true)
                                             {
+                                                Draw();
+                                                Console.SetCursorPosition(32, 12);
                                                 Console.Write("Username: ");
 
                                                 username = Console.ReadLine();
@@ -202,6 +204,8 @@ namespace SocialNet
 
                                             while (true)
                                             {
+                                                Draw();
+                                                Console.SetCursorPosition(33, 10);
                                                 Console.Write("Name: ");
 
                                                 name = Console.ReadLine();
@@ -224,6 +228,8 @@ namespace SocialNet
 
                                             while (true)
                                             {
+                                                Draw();
+                                                Console.SetCursorPosition(33, 10);
                                                 Console.Write("Surname: ");
 
                                                 surname = Console.ReadLine();
@@ -248,6 +254,8 @@ namespace SocialNet
                                             {
                                                 try
                                                 {
+                                                    Draw();
+                                                    Console.SetCursorPosition(33, 10);
                                                     Console.Write("Age: ");
 
                                                     age = Convert.ToInt32(Console.ReadLine());
@@ -267,6 +275,8 @@ namespace SocialNet
 
                                             while (true)
                                             {
+                                                Draw();
+                                                Console.SetCursorPosition(33, 10);
                                                 Console.Write("E-mail: ");
 
                                                 email = Console.ReadLine();
@@ -289,6 +299,8 @@ namespace SocialNet
 
                                             while (true)
                                             {
+                                                Draw();
+                                                Console.SetCursorPosition(33, 10);
                                                 Console.Write("Password: ");
 
                                                 password = Console.ReadLine();
@@ -321,6 +333,8 @@ namespace SocialNet
                                             {
                                                 CreateAccountConclusion.SendConfirmationCode(newUser.Email);
                                                 Console.Clear();
+                                                Draw();
+                                                Console.SetCursorPosition(32, 9);
                                                 Console.ForegroundColor = ConsoleColor.Green;
                                                 Console.WriteLine("Confirmation code sent! Check your mail!");
                                                 Console.ResetColor();
@@ -329,6 +343,8 @@ namespace SocialNet
                                                 var tryCount = 3;
                                                 while (tryCount-- > 0)
                                                 {
+                                                    
+                                                    Console.SetCursorPosition(33, 10);
                                                     Console.Write("Code > ");
                                                     Console.ForegroundColor = ConsoleColor.DarkGreen;
 
